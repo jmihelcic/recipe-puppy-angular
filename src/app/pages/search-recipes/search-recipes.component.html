@@ -1,9 +1,23 @@
-<div class="search-input-container" [formGroup]="searchForm">
-    <input type="text" formControlName="searchString" (keyup.enter)="onEnterPress()">
+<div class="page-left">
+    <app-ingredient-list [ingredientsForm]="ingredientsForm"></app-ingredient-list>
 </div>
 
-<div class="recipes-container">
-    <div *ngFor="let recipe of recipeList">
-        {{ recipe | json }}
+<div class="page-right">
+    <div class="search-input-container" [formGroup]="searchForm">
+        <input type="text" formControlName="searchString">
+    </div>
+
+    <div class="recipes-container">
+        <div *ngFor="let recipe of recipeList">
+            {{ recipe | json }}
+        </div>
+    </div>
+
+    <div class="pagination-container">
+        <i class="material-icons pagination-button" (click)="onPagePrevious()">navigate_before</i>
+        <div class="pagination-page">
+            {{ searchForm.get('page').value }}
+        </div>
+        <i class="material-icons pagination-button" (click)="onPageNext()">navigate_next</i>
     </div>
 </div>

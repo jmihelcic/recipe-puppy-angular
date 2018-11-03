@@ -1,0 +1,27 @@
+<div class="ingredient-list" [formGroup]="ingredientsForm">
+
+    <div class="add-ingredient-input-container">
+        <input type="text" formControlName="ingredientInput" (keyup.enter)="onAddIngredient()"
+               (keyup.escape)="onCancelAddIngredient()">
+    </div>
+
+    <div class="list" formArrayName="ingredientList">
+        <ng-container *ngFor="let ingredient of ingredientList.controls; let i = index;">
+            <div class="ingredient">
+
+                <div class="toggle-switch" (click)="onToggleIngredientInclusion(i)">
+                    {{ ingredient.value.included }}
+                </div>
+
+                <div class="ingredient-name">
+                    {{ ingredient.value.name }}
+                </div>
+
+                <div class="remove-ingredient" (click)="onRemoveIngredient(i)">
+                    remove me
+                </div>
+
+            </div>
+        </ng-container>
+    </div>
+</div>
