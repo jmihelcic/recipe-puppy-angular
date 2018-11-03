@@ -1,0 +1,23 @@
+{
+  "files.exclude": {
+    "__error": "Not found",
+    "**/*.spec.ts": true,
+    "e2e": true,
+    "node_modules": true,
+    ".editorconfig": true,
+    "angular.json": true,
+    "package-lock.json": true,
+    "package.json": true,
+    "tslint.json": true,
+    "src\\browserslist": true,
+    "src\\favicon.ico": true,
+    "src\\karma.conf.js": true,
+    "src\\polyfills.ts": true,
+    "src\\test.ts": true,
+    "src\\tsconfig.app.json": true,
+    "src\\tsconfig.spec.json": true,
+    "src\\tslint.json": true,
+    ".gitignore": true,
+    ".prettierrc": true
+  }
+}
