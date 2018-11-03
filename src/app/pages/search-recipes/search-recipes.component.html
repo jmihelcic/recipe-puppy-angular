@@ -1,3 +1,9 @@
-<p>
-  search-recipes works!
-</p>
+<div class="search-input-container" [formGroup]="searchForm">
+    <input type="text" formControlName="searchString" (keyup.enter)="onEnterPress()">
+</div>
+
+<div class="recipes-container">
+    <div *ngFor="let recipe of recipeList">
+        {{ recipe | json }}
+    </div>
+</div>

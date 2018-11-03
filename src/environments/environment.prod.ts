@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+    production: true,
+    endpointURL: 'http://www.recipepuppy.com',
+    corsHelperURL: 'https://cors-anywhere.herokuapp.com'
 };
