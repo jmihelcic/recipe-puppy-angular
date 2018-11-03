@@ -128,6 +128,10 @@ export class SearchRecipesComponent implements OnInit {
     }
 
     onPagePrevious() {
+        if (this.paginationLocked) {
+            return;
+        }
+
         const page = +this.searchForm.get('page').value;
         if (page === 1) {
             return;
@@ -137,6 +141,10 @@ export class SearchRecipesComponent implements OnInit {
     }
 
     onPageNext() {
+        if (this.paginationLocked) {
+            return;
+        }
+
         const page = +this.searchForm.get('page').value;
         this.searchForm.get('page').setValue(page + 1);
     }
@@ -154,10 +162,10 @@ export class SearchRecipesComponent implements OnInit {
         this.ingredientsForm = this.fb.group({
             ingredientInput: ['', []],
             ingredientList: this.fb.array([
-                this.fb.group({
-                    name: ['salt', []],
-                    included: [true, []]
-                })
+                // this.fb.group({
+                //     name: ['salt', []],
+                //     included: [true, []]
+                // })
             ])
         });
     }

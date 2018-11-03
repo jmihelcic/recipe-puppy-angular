@@ -10,7 +10,7 @@
     </div>
 
 
-    <div class="recipes-container">
+    <div class="recipes-container" [class.hidden]="paginationLocked">
         <div *ngFor="let recipe of recipeList">
             <app-recipe-tile [recipe]="recipe"></app-recipe-tile>
         </div>
@@ -23,4 +23,9 @@
         </div>
         <i class="material-icons pagination-button" (click)="onPageNext()">navigate_next</i>
     </div>
+</div>
+
+<div class="loader" [class.hidden]="!paginationLocked">
+    <i class="material-icons">local_dining</i>
+    <div class="text">Loading...</div>
 </div>
