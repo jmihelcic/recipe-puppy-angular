@@ -6,11 +6,19 @@
     </div>
 
     <div class="list" formArrayName="ingredientList">
-        <ng-container *ngFor="let ingredient of ingredientList.controls; let i = index;">
+        <ng-container *ngIf="ingredientList.controls.length === 0">
+            <div class="empty-ingredient-list">
+                Add an ingredient to refine your recipe search.
+            </div>
+        </ng-container>
 
-            <app-ingredient-tile [ingredient]="ingredient.value" (toggle)="onToggleIngredientInclusion(i)"
-                                 (remove)="onRemoveIngredient(i)"></app-ingredient-tile>
+        <ng-container *ngIf="ingredientList.controls.length > 0">
+            <ng-container *ngFor="let ingredient of ingredientList.controls; let i = index;">
 
+                <app-ingredient-tile [ingredient]="ingredient.value" (toggle)="onToggleIngredientInclusion(i)"
+                                     (remove)="onRemoveIngredient(i)"></app-ingredient-tile>
+
+            </ng-container>
         </ng-container>
     </div>
 </div>

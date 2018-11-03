@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ApiReponse } from '@core/models/api-response/api-response';
 import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, retry } from 'rxjs/operators';
 
 @Injectable({
     providedIn: CoreModule
@@ -13,7 +13,10 @@ import { map, catchError } from 'rxjs/operators';
 export class ServerService {
     constructor(private http: HttpClient) {}
 
-    get<T = any>(url: string): Observable<ApiReponse<T>> {
+    get<T = any>(
+        url: string,
+        retryTimes: number = 0
+    ): Observable<ApiReponse<T>> {
         const fullURL = this.getFullURL(url);
         const options = {
             headers: new HttpHeaders().set(
@@ -23,6 +26,7 @@ export class ServerService {
         };
 
         return this.http.get<T>(fullURL, options).pipe(
+            retry(retryTimes),
             map(response => {
                 console.log(response);
                 return ApiReponse.success(response);

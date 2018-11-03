@@ -12,7 +12,8 @@ import {
     distinctUntilChanged,
     map,
     switchMap,
-    tap
+    tap,
+    retry
 } from 'rxjs/operators';
 import { ApiReponse } from '@core/models/api-response/api-response';
 
@@ -24,8 +25,16 @@ import { ApiReponse } from '@core/models/api-response/api-response';
 export class SearchRecipesComponent implements OnInit {
     searchForm: FormGroup;
     ingredientsForm: FormGroup;
-    recipeList: any[];
+    recipeList: any[] = [];
     paginationLocked = false;
+
+    get currentPage() {
+        if (this.searchForm != null) {
+            return +this.searchForm.get('page').value;
+        }
+
+        return 0;
+    }
 
     // Fetches only happen when a pagination event is raised
     // The event can be triggered by moving to a different page
@@ -44,13 +53,6 @@ export class SearchRecipesComponent implements OnInit {
     }
 
     ngOnInit() {
-        // console.log('test fetch');
-        // this.service
-        //     .fetchRecipes('/api/?q=&i=onions,garlic&p=1')
-        //     .subscribe(response => {
-        //         console.log('got response: ', response);
-        //     });
-
         this.paginationObservable.subscribe(response => {
             console.log(response);
 
@@ -58,6 +60,9 @@ export class SearchRecipesComponent implements OnInit {
                 this.recipeList = response.payload.results;
             }
         });
+
+        // Trigger initial load
+        // this.searchForm.get('page').setValue(1);
     }
 
     setupFormChageObservable() {
@@ -142,6 +147,10 @@ export class SearchRecipesComponent implements OnInit {
 
     onPageNext() {
         if (this.paginationLocked) {
+            return;
+        }
+
+        if (this.recipeList.length < 10) {
             return;
         }
 

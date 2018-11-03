@@ -11,17 +11,35 @@
 
 
     <div class="recipes-container" [class.hidden]="paginationLocked">
-        <div *ngFor="let recipe of recipeList">
-            <app-recipe-tile [recipe]="recipe"></app-recipe-tile>
-        </div>
+
+        <ng-container *ngIf="recipeList.length === 0">
+            <div class="empty-recipe-list">
+                <i class="material-icons">
+                    sentiment_very_dissatisfied
+                </i>
+
+                No recipes found :(
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="recipeList.length > 0">
+            <div class="recipe-list">
+                <div *ngFor="let recipe of recipeList">
+                    <app-recipe-tile [recipe]="recipe"></app-recipe-tile>
+                </div>
+            </div>
+        </ng-container>
+
     </div>
 
     <div class="pagination-container">
-        <i class="material-icons pagination-button" (click)="onPagePrevious()">navigate_before</i>
+        <i class="material-icons pagination-button" [class.disabled]="currentPage === 1"
+           (click)="onPagePrevious()">navigate_before</i>
         <div class="pagination-page">
-            {{ searchForm.get('page').value }}
+            {{ currentPage }}
         </div>
-        <i class="material-icons pagination-button" (click)="onPageNext()">navigate_next</i>
+        <i class="material-icons pagination-button" [class.disabled]="recipeList.length < 10"
+           (click)="onPageNext()">navigate_next</i>
     </div>
 </div>
 

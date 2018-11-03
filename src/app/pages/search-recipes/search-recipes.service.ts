@@ -11,7 +11,7 @@ export class SearchRecipesService {
     constructor(private server: ServerService) {}
 
     fetchRecipes(url: string) {
-        return this.server.get<FetchRecipesResponse>(url);
+        return this.server.get<FetchRecipesResponse>(url, 2);
     }
 
     // Helpers
