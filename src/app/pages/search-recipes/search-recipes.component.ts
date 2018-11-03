@@ -54,15 +54,13 @@ export class SearchRecipesComponent implements OnInit {
 
     ngOnInit() {
         this.paginationObservable.subscribe(response => {
-            console.log(response);
-
             if (response.isOK === true) {
                 this.recipeList = response.payload.results;
             }
         });
 
         // Trigger initial load
-        // this.searchForm.get('page').setValue(1);
+        this.searchForm.get('page').setValue(1);
     }
 
     setupFormChageObservable() {
@@ -124,8 +122,6 @@ export class SearchRecipesComponent implements OnInit {
         this.service
             .fetchRecipes(`/api/?q=${searchString}&p=1`)
             .subscribe(response => {
-                console.log('got response: ', response);
-
                 if (response.isOK) {
                     this.recipeList = response.payload.results;
                 }

@@ -28,7 +28,6 @@ export class ServerService {
         return this.http.get<T>(fullURL, options).pipe(
             retry(retryTimes),
             map(response => {
-                console.log(response);
                 return ApiReponse.success(response);
             }),
             catchError(this.handleError)
