@@ -100,6 +100,15 @@ export class SearchRecipesComponent implements OnInit {
 
     // Events
 
+    onClearSearch() {
+        this.searchForm.patchValue(
+            {
+                searchString: ''
+            },
+            { emitEvent: false }
+        );
+    }
+
     onEnterPress() {
         const searchString = this.searchForm.get('searchString').value.trim();
 

@@ -4,8 +4,11 @@
 
 <div class="page-right">
     <div class="search-input-container" [formGroup]="searchForm">
-        <input type="text" formControlName="searchString">
+        <!-- <input type="text" formControlName="searchString"> -->
+
+        <app-search-input [parentFormGroup]="searchForm" (escapePress)="onClearSearch()"></app-search-input>
     </div>
+
 
     <div class="recipes-container">
         <div *ngFor="let recipe of recipeList">

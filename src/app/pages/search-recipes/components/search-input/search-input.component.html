@@ -1,0 +1,6 @@
+<div class="search-input" [formGroup]="parentFormGroup">
+
+    <input type="text" formControlName="searchString" (keyup.escape)="escapePress.emit()"
+           placeholder="Search for courses">
+
+</div>
