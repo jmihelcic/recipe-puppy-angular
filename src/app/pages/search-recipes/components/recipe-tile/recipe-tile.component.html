@@ -1,0 +1,10 @@
+<div class="recipe-tile">
+    <div *ngIf="recipe.thumbnail === ''" class="recipe-image">no image</div>
+    <img *ngIf="recipe.thumbnail !== ''" class="recipe-image" width="72" height=72
+         src="{{ recipe.thumbnail }}" />
+    <div class="recipe-info">
+        <h4>{{ recipe.title }}</h4>
+        <p>{{ recipe.ingredients }}</p>
+    </div>
+    <i class="material-icons recipe-icon" title="Open in new tab" (click)="onOpenExternalLink(recipe.href)">open_in_new</i>
+</div>

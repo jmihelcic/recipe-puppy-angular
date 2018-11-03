@@ -12,7 +12,7 @@
 
     <div class="recipes-container">
         <div *ngFor="let recipe of recipeList">
-            {{ recipe | json }}
+            <app-recipe-tile [recipe]="recipe"></app-recipe-tile>
         </div>
     </div>
 

@@ -18,7 +18,7 @@
     flex-direction: column;
     flex: 1;
     height: 100%;
-    background: #f5f5f5;
+    background: #ff98002b;
 }
 
 .search-input-container {
@@ -28,9 +28,14 @@
 }
 
 .recipes-container {
+    display: grid;
+    grid-gap: 16px;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, 512px);
     flex: 1;
+    overflow: auto;
     padding: 0 24px;
-    background: yellow;
 }
 
 .pagination-container {
@@ -40,6 +45,7 @@
     align-items: center;
     height: 48px;
     padding: 0 24px;
+    background: #ffffff;
 
     .pagination-page {
         width: 42px;
