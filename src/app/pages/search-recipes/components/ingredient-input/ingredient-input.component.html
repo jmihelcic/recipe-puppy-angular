@@ -1,0 +1,6 @@
+<div class="ingredient-input" [formGroup]="parentFormGroup">
+
+    <input type="text" formControlName="ingredientInput" (keyup.enter)="enterPress.emit()"
+           (keyup.escape)="escapePress.emit()" placeholder="Enter ingredient name">
+
+</div>

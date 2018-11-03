@@ -1,8 +1,8 @@
 <div class="ingredient-list" [formGroup]="ingredientsForm">
 
     <div class="add-ingredient-input-container">
-        <input type="text" formControlName="ingredientInput" (keyup.enter)="onAddIngredient()"
-               (keyup.escape)="onCancelAddIngredient()">
+        <app-ingredient-input [parentFormGroup]="ingredientsForm" (enterPress)="onAddIngredient()"
+                              (escapePress)="onCancelAddIngredient()"></app-ingredient-input>
     </div>
 
     <div class="list" formArrayName="ingredientList">
