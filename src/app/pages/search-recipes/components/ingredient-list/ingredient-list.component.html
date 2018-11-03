@@ -7,21 +7,10 @@
 
     <div class="list" formArrayName="ingredientList">
         <ng-container *ngFor="let ingredient of ingredientList.controls; let i = index;">
-            <div class="ingredient">
 
-                <div class="toggle-switch" (click)="onToggleIngredientInclusion(i)">
-                    {{ ingredient.value.included }}
-                </div>
+            <app-ingredient-tile [ingredient]="ingredient.value" (toggle)="onToggleIngredientInclusion(i)"
+                                 (remove)="onRemoveIngredient(i)"></app-ingredient-tile>
 
-                <div class="ingredient-name">
-                    {{ ingredient.value.name }}
-                </div>
-
-                <div class="remove-ingredient" (click)="onRemoveIngredient(i)">
-                    remove me
-                </div>
-
-            </div>
         </ng-container>
     </div>
 </div>

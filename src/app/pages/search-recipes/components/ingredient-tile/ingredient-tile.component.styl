@@ -1,0 +1,49 @@
+:host {
+    display: block;
+    padding: 2px 8px;
+}
+
+.ingredient-tile {
+    display: flex;
+    height: 42px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    background: #ffffff;
+
+    &:hover {
+        background: #f1f3f4;
+    }
+}
+
+.toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 42px;
+    color: #43A047;
+    cursor: pointer;
+
+    &.off {
+        color: #b71c1c;
+    }
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.remove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 42px;
+    cursor: pointer;
+    opacity: 0.2;
+
+    &:hover {
+        opacity: 1;
+    }
+}

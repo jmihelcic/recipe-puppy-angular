@@ -1,0 +1,7 @@
+<div class="ingredient-tile">
+    <i class="material-icons toggle" [class.off]="!included" (click)="toggle.emit()">{{
+        included ?
+        'toggle_on' : 'toggle_off' }}</i>
+    <div class="name">{{ ingredient.name }}</div>
+    <i class="material-icons remove" (click)="remove.emit()">clear</i>
+</div>
